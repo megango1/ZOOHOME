@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾 ЗооДім — Реєстрація</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="ЗооДім">
+  </div>
+  <nav class="horizontal-menu">
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="animals.html">Тварини</a></li>
+      <li><a href="products.html">Товари</a></li>
+      <li><a href="services.html">Послуги</a></li>
+      <li><a href="gallery.html">Галерея</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+      <li><a href="reviews.html">Відгуки</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li id="nav-login-li"><a href="login.html">Увійти</a></li>
+    </ul>
+  </nav>
+  <div id="header-user-area"></div>
+</header>
+
+<div class="page-wrapper">
+  <aside class="vertical-menu">
+    <h3>Навігація</h3>
+    <ul>
+      <li><a href="index.html"><span class="icon">🏠</span> Головна</a></li>
+      <li><a href="about.html"><span class="icon">ℹ️</span> Про нас</a></li>
+      <li><a href="animals.html"><span class="icon">🐶</span> Тварини</a></li>
+      <li><a href="products.html"><span class="icon">🛍️</span> Товари</a></li>
+      <li><a href="services.html"><span class="icon">✂️</span> Послуги</a></li>
+      <li><a href="gallery.html"><span class="icon">🖼️</span> Галерея</a></li>
+      <li><a href="blog.html"><span class="icon">📰</span> Блог</a></li>
+      <li><a href="reviews.html"><span class="icon">⭐</span> Відгуки</a></li>
+      <li><a href="contacts.html"><span class="icon">📍</span> Контакти</a></li>
+      <li><a href="register.html" class="active"><span class="icon">📝</span> Реєстрація</a></li>
+    </ul>
+  </aside>
+
+  <main class="auth-main">
+    <div class="auth-card">
+      <span class="paw-icon">🐶</span>
+      <h2>Реєстрація</h2>
+      <p class="auth-subtitle">Приєднуйся до спільноти ЗооДім — це швидко!</p>
+
+      <div class="msg-box" id="msg-box"></div>
+
+      <div class="form-group">
+        <label for="name">👤 Ім'я</label>
+        <div class="input-wrap">
+          <span class="input-icon">😊</span>
+          <input type="text" id="name" placeholder="Ваше ім'я" autocomplete="given-name"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">📧 Email</label>
+        <div class="input-wrap">
+          <span class="input-icon">✉️</span>
+          <input type="email" id="email" placeholder="example@email.com" autocomplete="email"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">📱 Телефон <span style="font-weight:400;color:#b5cfc0;">(необов'язково)</span></label>
+        <div class="input-wrap">
+          <span class="input-icon">📞</span>
+          <input type="tel" id="phone" placeholder="+380 xx xxx xx xx" autocomplete="tel"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">🔒 Пароль</label>
+        <div class="input-wrap">
+          <span class="input-icon">🔑</span>
+          <input type="password" id="password" placeholder="Мінімум 6 символів" autocomplete="new-password"/>
+          <button class="toggle-pass" type="button" onclick="togglePass('password', this)">👁️</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password2">🔒 Підтвердження пароля</label>
+        <div class="input-wrap">
+          <span class="input-icon">🔐</span>
+          <input type="password" id="password2" placeholder="Повторіть пароль" autocomplete="new-password"/>
+          <button class="toggle-pass" type="button" onclick="togglePass('password2', this)">👁️</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-check">
+          <input type="checkbox" id="agree"/>
+          Я погоджуюсь з <a href="#" style="color:#2d6a4f;font-weight:700;">&nbsp;умовами використання</a>
+        </label>
+      </div>
+
+      <button class="btn-auth" onclick="handleRegister()">Зареєструватись 🐾</button>
+
+      <div class="auth-divider">або</div>
+
+      <div class="auth-switch">
+        Вже є акаунт? <a href="login.html">Увійти</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <p>© 2026 ЗооДім</p>
+  <div style="margin-top:8px;">
+    <a href="about.html">Про нас</a>
+    <a href="contacts.html">Контакти</a>
+  </div>
+  <div class="social-links" style="justify-content:center;">
+    <a href="https://facebook.com" target="_blank" class="social-fb">f</a>
+    <a href="https://instagram.com" target="_blank" class="social-inst">📸</a>
+    <a href="https://t.me" target="_blank" class="social-tg">✈</a>
+    <a href="https://youtube.com" target="_blank" class="social-yt">▶</a>
+  </div>
+</footer>
+
+<script>
+  // ===== АВТОРИЗАЦІЯ В ХЕДЕРІ =====
+  (function() {
+    var user = null;
+    try { user = JSON.parse(localStorage.getItem('zoodom_current_user') || 'null'); } catch(e) {}
+
+    var area = document.getElementById('header-user-area');
+    var loginLi = document.getElementById('nav-login-li');
+
+    if (!user) return;
+
+    if (loginLi) loginLi.style.display = 'none';
+
+    var initials = user.name.trim().split(/\s+/).slice(0, 2).map(function(w){ return w[0].toUpperCase(); }).join('');
+    var firstName = user.name.split(' ')[0];
+
+    area.innerHTML =
+      '<div class="header-user" id="header-user-wrap">' +
+        '<button class="user-btn" id="user-btn-toggle" type="button">' +
+          '<div class="user-avatar">' + initials + '</div>' +
+          '<span class="user-name-short">' + firstName + '</span>' +
+          '<span class="user-arrow">▾</span>' +
+        '</button>' +
+        '<div class="user-dropdown" id="user-dropdown">' +
+          '<div class="user-dropdown-header">' +
+            '<div class="dd-name">' + user.name + '</div>' +
+            '<div class="dd-email">' + user.email + '</div>' +
+          '</div>' +
+          '<ul>' +
+            '<li><a href="profile.html">👤 Мій профіль</a></li>' +
+            '<li class="dd-separator"></li>' +
+            '<li><button class="dd-logout" onclick="logoutUser()">🚪 Вийти</button></li>' +
+          '</ul>' +
+        '</div>' +
+      '</div>';
+
+    var btn = document.getElementById('user-btn-toggle');
+    var dropdown = document.getElementById('user-dropdown');
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+      btn.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      dropdown.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  })();
+
+  function logoutUser() {
+    localStorage.removeItem('zoodom_current_user');
+    window.location.href = 'index.html';
+  }
+
+  // ===== РЕЄСТРАЦІЯ =====
+  function togglePass(id, btn) {
+    var inp = document.getElementById(id);
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    btn.textContent = inp.type === 'password' ? '👁️' : '🙈';
+  }
+
+  function showMsg(type, text) {
+    var b = document.getElementById('msg-box');
+    b.className = 'msg-box ' + type;
+    b.textContent = text;
+  }
+
+  function handleRegister() {
+    var name      = document.getElementById('name').value.trim();
+    var email     = document.getElementById('email').value.trim();
+    var phone     = document.getElementById('phone').value.trim();
+    var password  = document.getElementById('password').value;
+    var password2 = document.getElementById('password2').value;
+    var agree     = document.getElementById('agree').checked;
+
+    document.getElementById('msg-box').className = 'msg-box';
+
+    if (!name)     { showMsg('error', "⚠️ Будь ласка, введіть ваше ім'я."); return; }
+    if (!email)    { showMsg('error', '⚠️ Будь ласка, введіть email.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('error', '⚠️ Некоректний формат email.'); return; }
+    if (!password) { showMsg('error', '⚠️ Будь ласка, введіть пароль.'); return; }
+    if (password.length < 6) { showMsg('error', '⚠️ Пароль має бути не менше 6 символів.'); return; }
+    if (password !== password2) { showMsg('error', '⚠️ Паролі не збігаються.'); return; }
+    if (!agree) { showMsg('error', '⚠️ Погодьтесь з умовами використання.'); return; }
+
+    var users = JSON.parse(localStorage.getItem('zoodom_users') || '[]');
+    if (users.find(function(u) { return u.email === email; })) {
+      showMsg('error', '❌ Користувач з таким email вже існує.');
+      return;
+    }
+
+    var registeredAt = new Date().toLocaleDateString('uk-UA', { day:'numeric', month:'long', year:'numeric' });
+    var newUser = { name: name, email: email, phone: phone, password: password, registeredAt: registeredAt };
+    users.push(newUser);
+    localStorage.setItem('zoodom_users', JSON.stringify(users));
+    localStorage.setItem('zoodom_current_user', JSON.stringify(newUser));
+
+    showMsg('success', '🎉 Вітаємо, ' + name + '! Реєстрація успішна. Перенаправляємо...');
+    setTimeout(function() { window.location.href = 'index.html'; }, 1600);
+  }
+
+  document.addEventListener('keydown', function(e) { if (e.key === 'Enter') handleRegister(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾 ЗооДім — Товари</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="ЗооДім">
+  </div>
+  <nav class="horizontal-menu">
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="animals.html">Тварини</a></li>
+      <li><a href="products.html" class="active">Товари</a></li>
+      <li><a href="services.html">Послуги</a></li>
+      <li><a href="gallery.html">Галерея</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="reviews.html">Відгуки</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+      <li id="nav-login-li"><a href="login.html">Увійти</a></li>
+    </ul>
+  </nav>
+  <div id="header-user-area"></div>
+</header>
+
+<div class="page-wrapper">
+  <aside class="vertical-menu">
+    <h3>Навігація</h3>
+    <ul>
+      <li><a href="index.html"><span class="icon">🏠</span> Головна</a></li>
+      <li><a href="about.html"><span class="icon">ℹ️</span> Про нас</a></li>
+      <li><a href="animals.html"><span class="icon">🐶</span> Тварини</a></li>
+      <li><a href="products.html" class="active"><span class="icon">🛍️</span> Товари</a></li>
+      <li><a href="services.html"><span class="icon">✂️</span> Послуги</a></li>
+      <li><a href="gallery.html"><span class="icon">🖼️</span> Галерея</a></li>
+      <li><a href="blog.html"><span class="icon">📰</span> Блог</a></li>
+      <li><a href="reviews.html"><span class="icon">⭐</span> Відгуки</a></li>
+      <li><a href="contacts.html"><span class="icon">📍</span> Контакти</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <h2 class="section-title">Каталог товарів</h2>
+    <p class="section-subtitle">Все необхідне для вашого улюбленця в одному місці</p>
+
+<div class="cards-grid">
+
+  <div class="card">
+    <img src="img/whiskas.jpg" alt="Корм для котів"/>
+    <div class="card-body">
+      <h3>🐱 Whiskas для котів</h3>
+      <p>Смачний корм для котів з м’ясними інгредієнтами та вітамінами.</p>
+      <div class="price">95 грн / уп</div>
+      <button class="btn btn-primary" onclick="addToCart('Whiskas для котів', 95)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/klitka.jpg" alt="Клітка"/>
+    <div class="card-body">
+      <h3>🐹 Клітка для хом’яка</h3>
+      <p>Зручна клітка з колесом та поїлкою для активного життя.</p>
+      <div class="price">750 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Клітка для хом’яка', 750)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/povidok.webp" alt="Повідок"/>
+    <div class="card-body">
+      <h3>🦮 Потужний повідець для собак</h3>
+      <p>Міцний потужний повідець з металевим карабіном.</p>
+      <div class="price">210 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Потужний повідець для собак', 210)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/kota.jpg" alt="Лежак"/>
+    <div class="card-body">
+      <h3>🛏 Лежак для кота</h3>
+      <p>М’який та теплий лежак для комфортного відпочинку.</p>
+      <div class="price">680 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Лежак для кота', 680)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/sino.jpg" alt="Сіно"/>
+    <div class="card-body">
+      <h3>🐰 Сіно для кроликів</h3>
+      <p>Натуральне сіно для гризунів, багате на клітковину.</p>
+      <div class="price">120 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Сіно для кроликів', 120)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/muska.webp" alt="Миска"/>
+    <div class="card-body">
+      <h3>🥣 Миска для корму</h3>
+      <p>Антиковзка миска для зручного годування тварин.</p>
+      <div class="price">150 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Миска для корму', 150)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/budka.jpg" alt="Будка"/>
+    <div class="card-body">
+      <h3>🏠 Будка для собаки</h3>
+      <p>Тепла дерев’яна будка для комфортного проживання.</p>
+      <div class="price">3 200 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Будка для собаки', 3200)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/kogti.webp" alt="Когтеточка"/>
+    <div class="card-body">
+      <h3>🐾 Когтеточка</h3>
+      <p>Допоможе зберегти меблі та задовольнить інстинкти кота.</p>
+      <div class="price">540 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Когтеточка', 540)">+ До кошика</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="img/nashuinuk.jpeg" alt="Нашийник"/>
+    <div class="card-body">
+      <h3>🐕 Нашийник</h3>
+      <p>Регульований нашийник для собак різних порід.</p>
+      <div class="price">130 грн</div>
+      <button class="btn btn-primary" onclick="addToCart('Нашийник', 130)">+ До кошика</button>
+    </div>
+  </div>
+
+</div>
+
+    <!-- КОШИК -->
+    <div id="cart" style="background:white;border-radius:16px;padding:24px;margin-top:28px;box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+      <h3 style="color:#1b4332;margin-bottom:16px;">🛒 Ваш кошик</h3>
+      <div id="cart-items" style="min-height:40px;color:#888;">Кошик порожній</div>
+      <div id="cart-total" style="font-size:18px;font-weight:700;color:#40916c;margin-top:12px;"></div>
+      <button onclick="toggleCheckout()" style="
+  margin-top:15px;
+  padding:10px 20px;
+  background:#40916c;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+">
+
+  Оформити замовлення
+</button>
+
+<div id="checkoutForm" style="display:none; margin-top:20px;">
+
+  <form id="checkout-form">
+
+    <div id="checkout-msg" style="margin-bottom:10px;"></div>
+
+    <h3 style="margin-bottom:15px;">Оформлення замовлення</h3>
+
+    <input type="text" id="name" placeholder="Прізвище та ім'я" class="input"><br>
+
+    <input type="tel" id="phone" placeholder="Номер телефону" class="input"><br>
+
+    <select id="payment" class="input">
+      <option>Готівка при отриманні</option>
+      <option>Карткою</option>
+    </select><br>
+
+    <select id="shop" class="input">
+      <option>Львів, Пулюя І. 42</option>
+      <option>Львів, Просп. Свободи 1</option>
+    </select><br>
+
+    <button type="submit" class="confirm-btn">
+      Підтвердити замовлення
+    </button>
+  </form>
+</div>
+</div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <p>© 2026 ЗооДім</p>
+  <div style="margin-top:8px;">
+    <a href="about.html">Про нас</a>
+    <a href="contacts.html">Контакти</a>
+  </div>
+  <div class="social-links" style="justify-content:center;margin-top:10px;">
+    <a href="https://facebook.com" target="_blank" class="social-fb">f</a>
+    <a href="https://instagram.com" target="_blank" class="social-inst">📸</a>
+    <a href="https://t.me" target="_blank" class="social-tg">✈</a>
+    <a href="https://youtube.com" target="_blank" class="social-yt">▶</a>
+  </div>
+</footer>
+
+<script>
+  // ===== ДАНІ ТОВАРІВ =====
+  let cart = [];
+
+  // ===== КОШИК =====
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    renderCart();
+  }
+
+  function renderCart() {
+    const div = document.getElementById('cart-items');
+    const total = document.getElementById('cart-total');
+    if (!cart.length) {
+      div.innerHTML = '<span style="color:#888;">Кошик порожній</span>';
+      total.textContent = '';
+      return;
+    }
+    div.innerHTML = cart.map((item, i) =>
+      `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;">
+        <span>${item.name}</span>
+        <span style="color:#40916c;font-weight:600;">${item.price} грн
+          <button onclick="removeFromCart(${i})" style="background:none;border:none;cursor:pointer;color:#e74c3c;font-size:16px;">✕</button>
+        </span>
+      </div>`
+    ).join('');
+    const sum = cart.reduce((acc, i) => acc + i.price, 0);
+    total.textContent = `Разом: ${sum} грн`;
+  }
+
+  function removeFromCart(idx) {
+    cart.splice(idx, 1);
+    renderCart();
+  }
+
+  // Початковий рендер
+  renderTable(products);
+</script>
+<script>
+function toggleCheckout() {
+  const form = document.getElementById("checkoutForm");
+  form.style.display = form.style.display === "none" ? "block" : "none";
+}
+</script>
+<script>
+document.getElementById('checkout-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const shop = document.getElementById('shop').value;
+
+  if (!name || !phone) {
+    document.getElementById('checkout-msg').innerHTML =
+      '<span style="color:#e74c3c;">⚠️ Заповніть всі поля!</span>';
+    return;
+  }
+
+  document.getElementById('checkout-msg').innerHTML =
+    `<span style="color:#2d6a4f;">
+      ✅ Замовлення успішно оформлене!<br>
+      Очікуйте дзвінка 📞<br>
+      ${name}, ${phone}<br>
+      Магазин: ${shop}
+    </span>`;
+
+  this.reset();
+});
+</script>
+<style>
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #40916c;
+  box-shadow: 0 0 5px rgba(64,145,108,0.3);
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: 12px;
+  background: #40916c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background: #2d6a4f;
+}
+</style>
+<script src="auth-header.js"></script>
+</body>
+</html>

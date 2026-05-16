@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾 ЗооДім — Відгуки</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="ЗооДім">
+  </div>
+  <nav class="horizontal-menu">
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="animals.html">Тварини</a></li>
+      <li><a href="products.html">Товари</a></li>
+      <li><a href="services.html">Послуги</a></li>
+      <li><a href="gallery.html">Галерея</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="reviews.html" class="active">Відгуки</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+      <li id="nav-login-li"><a href="login.html">Увійти</a></li>
+    </ul>
+  </nav>
+  <div id="header-user-area"></div>
+</header>
+
+<div class="page-wrapper">
+
+  <aside class="vertical-menu">
+    <h3>Навігація</h3>
+    <ul>
+      <li><a href="index.html"><span class="icon">🏠</span> Головна</a></li>
+      <li><a href="about.html"><span class="icon">ℹ️</span> Про нас</a></li>
+      <li><a href="animals.html"><span class="icon">🐶</span> Тварини</a></li>
+      <li><a href="products.html"><span class="icon">🛍️</span> Товари</a></li>
+      <li><a href="services.html"><span class="icon">✂️</span> Послуги</a></li>
+      <li><a href="gallery.html"><span class="icon">🖼️</span> Галерея</a></li>
+      <li><a href="blog.html"><span class="icon">📰</span> Блог</a></li>
+      <li><a href="reviews.html" class="active"><span class="icon">⭐</span> Відгуки</a></li>
+      <li><a href="contacts.html"><span class="icon">📍</span> Контакти</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <h2 class="section-title">Відгуки клієнтів</h2>
+    <p class="section-subtitle">Дізнайтесь, що кажуть наші клієнти про наші послуги</p>
+
+    <!-- Фільтри по рейтингу -->
+    <div class="reviews-filters">
+      <button class="filter-btn active" data-stars="0">Усі</button>
+      <button class="filter-btn" data-stars="5">★★★★★</button>
+      <button class="filter-btn" data-stars="4">★★★★☆</button>
+      <button class="filter-btn" data-stars="3">★★★☆☆</button>
+      <button class="filter-btn" data-stars="2">★★☆☆☆</button>
+      <button class="filter-btn" data-stars="1">★☆☆☆☆</button>
+    </div>
+
+    <!-- Сітка відгуків -->
+    <div class="reviews-grid" id="reviews"></div>
+
+    <!-- Пагінація -->
+    <div class="reviews-pagination" id="pagination"></div>
+    <p class="reviews-count" id="reviews-count"></p>
+
+    <!-- Форма -->
+    <div class="review-form">
+      <h2>Залишити відгук</h2>
+
+      <input type="text" id="name" placeholder="Ваше ім'я">
+      <textarea id="message" placeholder="Ваш відгук"></textarea>
+
+      <select id="rating">
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★☆</option>
+        <option value="3">★★★☆☆</option>
+        <option value="2">★★☆☆☆</option>
+        <option value="1">★☆☆☆☆</option>
+      </select>
+
+      <button onclick="addReview()" class="btn btn-primary">Надіслати</button>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2026 ЗооДім</p>
+  <div style="margin-top:8px;">
+    <a href="about.html">Про нас</a>
+    <a href="contacts.html">Контакти</a>
+  </div>
+
+  <div class="social-links" style="justify-content:center;margin-top:10px;">
+    <a href="https://facebook.com" target="_blank" class="social-fb">f</a>
+    <a href="https://instagram.com" target="_blank" class="social-inst">📸</a>
+    <a href="https://t.me" target="_blank" class="social-tg">✈</a>
+    <a href="https://youtube.com" target="_blank" class="social-yt">▶</a>
+  </div>
+</footer>
+
+<script>
+  const REVIEWS_PER_PAGE = 6;
+  let currentPage = 1;
+  let currentFilter = 0;
+
+  const reviewsData = [
+    { name: "Марія(Менеджер)", stars: 4, text: "Хороший сервіс і привітний персонал 😊" },
+    { name: "Олександр(Директор)", stars: 5, text: "Дуже швидка доставка, все прийшло в ідеальному стані!" },
+    { name: "Ірина(Бухгалтер)", stars: 5, text: "Купували корм для кота — він у захваті 😺" },
+    { name: "Віталій(Адміністратор)", stars: 3, text: "Все добре, але хотілося б більше вибору товарів." },
+    { name: "Наталія(Бариста)", stars: 5, text: "Чудовий магазин! Продавці допомогли з вибором." },
+    { name: "Дмитро(Ведучий)", stars: 4, text: "Ціни приємні, буду замовляти ще 👍" },
+    { name: "Катерина(Співак)", stars: 5, text: "Кролик дуже милий і здоровий 🐰 Дякую!" },
+    { name: "Андрій(Касир)", stars: 4, text: "Зручний сайт і швидке оформлення замовлення." },
+    { name: "Юлія(Тестувальниця)", stars: 5, text: "Замовляла іграшки для собаки — якість супер!" },
+    { name: "Максим(Вантажник)", stars: 5, text: "Все сподобалось, рекомендую цей магазин друзям!" },
+    { name: "Артем(Дизайнер)", stars: 1, text: "Замовлення прийшло із затримкою, і упаковка була пошкоджена. Сподіваюсь, сервіс стане кращим." },
+  ];
+
+  function getStarsHTML(n) {
+    return "★".repeat(n) + "☆".repeat(5 - n);
+  }
+
+  function getFiltered() {
+    return currentFilter === 0
+      ? reviewsData
+      : reviewsData.filter(r => r.stars === currentFilter);
+  }
+
+  function renderReviews() {
+    const data = getFiltered();
+    const totalPages = Math.max(1, Math.ceil(data.length / REVIEWS_PER_PAGE));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * REVIEWS_PER_PAGE;
+    const slice = data.slice(start, start + REVIEWS_PER_PAGE);
+
+    // Відгуки
+    const grid = document.getElementById('reviews');
+    grid.innerHTML = slice.map(r => `
+      <div class="review-card">
+        <h3>${r.name}</h3>
+        <div class="stars">${getStarsHTML(r.stars)}</div>
+        <p>${r.text}</p>
+      </div>
+    `).join('');
+
+    // Пагінація
+    const pag = document.getElementById('pagination');
+    let html = `<button class="page-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&#8249;</button>`;
+    for (let i = 1; i <= totalPages; i++) {
+      html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+    }
+    html += `<button class="page-btn" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>&#8250;</button>`;
+    pag.innerHTML = html;
+
+    // Лічильник
+    const from = start + 1;
+    const to = Math.min(start + REVIEWS_PER_PAGE, data.length);
+    document.getElementById('reviews-count').textContent =
+      data.length > 0 ? `Показано ${from}–${to} з ${data.length} відгуків` : 'Немає відгуків';
+  }
+
+  function goPage(p) {
+    const totalPages = Math.ceil(getFiltered().length / REVIEWS_PER_PAGE);
+    if (p < 1 || p > totalPages) return;
+    currentPage = p;
+    renderReviews();
+    document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Фільтри
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = parseInt(btn.dataset.stars);
+      currentPage = 1;
+      renderReviews();
+    });
+  });
+
+  function addReview() {
+    const name = document.getElementById('name').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const rating = parseInt(document.getElementById('rating').value);
+
+    if (!name || !message) {
+      alert("Заповніть всі поля!");
+      return;
+    }
+
+    reviewsData.unshift({ name, stars: rating, text: message });
+
+    document.getElementById('name').value = "";
+    document.getElementById('message').value = "";
+
+    currentFilter = 0;
+    currentPage = 1;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.filter-btn[data-stars="0"]').classList.add('active');
+
+    renderReviews();
+    document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  renderReviews();
+</script>
+
+<script src="auth-header.js"></script>
+</body>
+</html>

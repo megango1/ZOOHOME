@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾 ЗооДім — Послуги</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="ЗооДім">
+  </div>
+  <nav class="horizontal-menu">
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="animals.html">Тварини</a></li>
+      <li><a href="products.html">Товари</a></li>
+      <li><a href="services.html" class="active">Послуги</a></li>
+      <li><a href="gallery.html">Галерея</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="reviews.html">Відгуки</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+      <li id="nav-login-li"><a href="login.html">Увійти</a></li>
+    </ul>
+  </nav>
+  <div id="header-user-area"></div>
+</header>
+
+<div class="page-wrapper">
+  <aside class="vertical-menu">
+    <h3>Навігація</h3>
+    <ul>
+      <li><a href="index.html"><span class="icon">🏠</span> Головна</a></li>
+      <li><a href="about.html"><span class="icon">ℹ️</span> Про нас</a></li>
+      <li><a href="animals.html"><span class="icon">🐶</span> Тварини</a></li>
+      <li><a href="products.html"><span class="icon">🛍️</span> Товари</a></li>
+      <li><a href="services.html" class="active"><span class="icon">✂️</span> Послуги</a></li>
+      <li><a href="gallery.html"><span class="icon">🖼️</span> Галерея</a></li>
+      <li><a href="blog.html"><span class="icon">📰</span> Блог</a></li>
+      <li><a href="reviews.html"><span class="icon">⭐</span> Відгуки</a></li>
+      <li><a href="contacts.html"><span class="icon">📍</span> Контакти</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <h2 class="section-title">Наші послуги</h2>
+    <p class="section-subtitle">Повний спектр послуг для вашого улюбленця</p>
+
+    <!-- КАРТКИ ПОСЛУГ -->
+    <div class="cards-grid">
+      <div class="card">
+        <img src="img/sobaka-pered-grumingom.webp" alt="Грумінг"/>
+        <div class="card-body">
+          <h3>✂️ Грумінг</h3>
+          <p>Професійна стрижка, миття, сушка та укладання вовни. Наші грумери мають багаторічний досвід роботи.</p>
+          <div class="price">від 350 грн</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/balloon-dog_xl.jpg" alt="Ветеринар"/>
+        <div class="card-body">
+          <h3>👨‍⚕️ Ветеринарна консультація</h3>
+          <p>Первинний огляд, консультація, вакцинація. Ветеринар працює щодня без вихідних.</p>
+          <div class="price">від 200 грн</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/gotel.jpg" alt="Готель"/>
+        <div class="card-body">
+          <h3>🏨 Зооготель</h3>
+          <p>Залиште улюбленця під надійним наглядом на час вашої відсутності. Годування та прогулянки включено.</p>
+          <div class="price">від 250 грн/добу</div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/dresuruvanya.png" alt="Дресирування"/>
+        <div class="card-body">
+          <h3>🎓 Дресирування</h3>
+          <p>Індивідуальні та групові заняття з кінологом. Базовий курс, корекція поведінки.</p>
+          <div class="price">від 500 грн/заняття</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ПРАЙС-ЛИСТ -->
+    <h2 class="section-title" style="margin-top:35px;">Прайс-лист послуг</h2>
+    <p class="section-subtitle">Детальні ціни на всі наші послуги</p>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Послуга</th>
+          <th>Для тварини</th>
+          <th>Тривалість</th>
+          <th>Ціна (грн)</th>
+          <th>Примітка</th>
+        </tr>
+      </thead>
+      <tbody id="services-table">
+      </tbody>
+    </table>
+
+    <!-- ЗАПИС НА ПОСЛУГУ -->
+    <div style="background:white;border-radius:16px;padding:28px;margin-top:28px;box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+      <h3 style="color:#1b4332;font-size:22px;margin-bottom:20px;">📅 Записатися на послугу</h3>
+      <form id="booking-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
+          <div class="form-group">
+            <label>Ваше ім'я</label>
+            <input type="text" id="book-name" placeholder="Іван Іваненко"/>
+          </div>
+          <div class="form-group">
+            <label>Телефон</label>
+            <input type="tel" id="book-phone" placeholder="+380 XX XXX XX XX"/>
+          </div>
+          <div class="form-group">
+            <label>Послуга</label>
+            <select id="book-service">
+              <option>Грумінг — стрижка</option>
+              <option>Грумінг — мийка + сушка</option>
+              <option>Ветеринарна консультація</option>
+              <option>Готель для тварин</option>
+              <option>Дресирування</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Дата та час</label>
+            <input type="datetime-local" id="book-date"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:10px;">✅ Записатися</button>
+      </form>
+      <div id="booking-msg" style="margin-top:14px;font-size:16px;font-weight:600;"></div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <p>© 2026 ЗооДім</p>
+  <div style="margin-top:8px;">
+    <a href="about.html">Про нас</a>
+    <a href="contacts.html">Контакти</a>
+    <a href="register.html">Реєстрація</a>
+  </div>
+  <div class="social-links" style="justify-content:center;margin-top:10px;">
+    <a href="https://facebook.com" target="_blank" class="social-fb">f</a>
+    <a href="https://instagram.com" target="_blank" class="social-inst">📸</a>
+    <a href="https://t.me" target="_blank" class="social-tg">✈</a>
+    <a href="https://youtube.com" target="_blank" class="social-yt">▶</a>
+  </div>
+</footer>
+
+<script>
+  // ===== ТАБЛИЦЯ ПОСЛУГ =====
+  const servicesData = [
+    ['Стрижка (малі породи)', 'Собаки', '1–1.5 год', '350–500', 'Без гарантійного купання'],
+    ['Стрижка (великі породи)', 'Собаки', '2–3 год', '600–900', 'Включає вичісування'],
+    ['Миття + сушка', 'Собаки/Коти', '1 год', '250–400', 'Преміум шампунь'],
+    ['Тримінг', 'Жорсткошерсті', '2 год', '500–700', 'За попереднім записом'],
+    ['Первинний огляд', 'Всі', '30 хв', '200', 'З консультацією'],
+    ['Вакцинація', 'Собаки/Коти', '15 хв', '350–600', 'Включає паспорт'],
+    ['Стрижка кігтів', 'Всі', '15 хв', '80–150', 'Без запису'],
+    ['Готель (1 доба)', 'Собаки', '24 год', '300–450', '3 рази годування'],
+    ['Готель (1 доба)', 'Коти', '24 год', '250', '2 рази годування'],
+    ['Дресирування (1 заняття)', 'Собаки', '1 год', '500', 'Індивідуально'],
+    ['Курс дресирування (10 занять)', 'Собаки', '10 год', '4000', 'Знижка 20%'],
+    ['Чищення вух', 'Собаки/Коти', '15 хв', '100', 'Без запису'],
+  ];
+
+  const tbody = document.getElementById('services-table');
+  servicesData.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = row.map((cell, i) =>
+      i === 3
+        ? `<td><strong style="color:#40916c;">${cell} грн</strong></td>`
+        : `<td>${cell}</td>`
+    ).join('');
+    tbody.appendChild(tr);
+  });
+
+  // ===== ФОРМА ЗАПИСУ =====
+  document.getElementById('booking-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('book-name').value.trim();
+    const phone = document.getElementById('book-phone').value.trim();
+    const service = document.getElementById('book-service').value;
+    const date = document.getElementById('book-date').value;
+
+    if (!name || !phone || !date) {
+      document.getElementById('booking-msg').innerHTML = '<span style="color:#e74c3c;">⚠️ Заповніть всі поля!</span>';
+      return;
+    }
+    const dateStr = new Date(date).toLocaleString('uk-UA');
+    document.getElementById('booking-msg').innerHTML =
+      `<span style="color:#2d6a4f;">✅ Дякуємо, ${name}! Ваш запис на <strong>${service}</strong> о <strong>${dateStr}</strong> підтверджено. Очікуйте дзвінок на номер ${phone}.</span>`;
+    this.reset();
+  });
+</script>
+<script src="auth-header.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾 ЗооДім — Тварини</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="ЗооДім">
+  </div>
+  <nav class="horizontal-menu">
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="animals.html" class="active">Тварини</a></li>
+      <li><a href="products.html">Товари</a></li>
+      <li><a href="services.html">Послуги</a></li>
+      <li><a href="gallery.html">Галерея</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="reviews.html">Відгуки</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+      <li id="nav-login-li"><a href="login.html">Увійти</a></li>
+    </ul>
+  </nav>
+  <div id="header-user-area"></div>
+</header>
+
+<div class="page-wrapper">
+  <aside class="vertical-menu">
+    <h3>Навігація</h3>
+    <ul>
+      <li><a href="index.html"><span class="icon">🏠</span> Головна</a></li>
+      <li><a href="about.html"><span class="icon">ℹ️</span> Про нас</a></li>
+      <li><a href="animals.html" class="active"><span class="icon">🐶</span> Тварини</a></li>
+      <li><a href="products.html"><span class="icon">🛍️</span> Товари</a></li>
+      <li><a href="services.html"><span class="icon">✂️</span> Послуги</a></li>
+      <li><a href="gallery.html"><span class="icon">🖼️</span> Галерея</a></li>
+      <li><a href="blog.html"><span class="icon">📰</span> Блог</a></li>
+      <li><a href="reviews.html"><span class="icon">⭐</span> Відгуки</a></li>
+      <li><a href="contacts.html"><span class="icon">📍</span> Контакти</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <h2 class="section-title">Тварини в нашому магазині</h2>
+    <p class="section-subtitle">Знайдіть свого майбутнього улюбленця!</p>
+
+    <!-- КАРТКИ ТВАРИН -->
+    <div class="cards-grid" id="gruz">
+
+    <div class="card" data-type="hamster">
+     <img src="img/homa.jpg" alt="Хом'як"/>
+     <div class="card-body">
+       <h3>🐹 Хом'яки</h3>
+       <p>Милі та активні домашні улюбленці. Ідеально підходять для квартири.</p>
+       <div class="price">від 120 грн/шт</div>
+       <span class="badge badge-green">В наявності</span>
+       <span class="badge badge-blue">Різний вік</span>
+       </div>
+      </div>
+
+    <div class="card" data-type="gruz">
+     <img src="img/guinea-pig.jpg" alt="Морська свинка"/>
+     <div class="card-body">
+      <h3>🐹 Морські свинки</h3>
+      <p>Спокійні та дружелюбні тварини, легко звикають до людей.</p>
+      <div class="price">від 200 грн/шт</div>
+      <span class="badge badge-green">В наявності</span>
+      <span class="badge badge-blue">Різний вік</span>
+      </div>
+     </div>
+
+     <div class="card" data-type="gruz">
+     <img src="img/rabbit.jpg" alt="Кролик"/>
+     <div class="card-body">
+       <h3>🐰 Кролики</h3>
+       <p>Лагідні пухнастики, чудово підходять як домашні улюбленці.</p>
+       <div class="price">від 300 грн/шт</div>
+       <span class="badge badge-green">В наявності</span>
+       <span class="badge badge-blue">Різний вік</span>
+       </div>
+      </div>
+
+    <div class="card" data-type="gruz">
+     <img src="img/rat.jpeg" alt="Криса"/>
+      <div class="card-body">
+      <h3>🐭 Домашні криси</h3>
+      <p>Розумні та соціальні тварини, легко навчаються та прив’язуються.</p>
+      <div class="price">від 100 грн/шт</div>
+      <span class="badge badge-green">В наявності</span>
+      <span class="badge badge-blue">Різний вік</span>
+      </div>
+     </div>
+
+      <div class="card" data-type="bird">
+        <img src="img/papuga.jfif" alt="Папуга"/>
+        <div class="card-body">
+          <h3>🦜 Хвилястий папуга</h3>
+          <p>Яскравий та балакучий пернатий друг. Легко піддається дресируванню.</p>
+          <div class="price">від 800 грн</div>
+          <span class="badge badge-green">В наявності</span>
+          <span class="badge badge-blue">Вік: 1.5 міс</span>
+        </div>
+      </div>
+
+      <div class="card" data-type="bird">
+        <img src="img/pap.jfif" alt="Канарка"/>
+        <div class="card-body">
+          <h3>🐦 Канарка</h3>
+          <p>Чудовий спів наповнить ваш дім мелодіями. Невибаглива у догляді.</p>
+          <div class="price">від 600 грн</div>
+          <span class="badge badge-green">В наявності</span>
+          <span class="badge badge-blue">Вік: 2 міс</span>
+        </div>
+      </div>
+
+      <div class="card" data-type="fish">
+        <img src="img/rubku.jpg" alt="Рибки"/>
+        <div class="card-body">
+          <h3>🐠 Тропічні рибки</h3>
+          <p>Яскраві мешканці акваріуму. Широкий вибір видів та розмірів.</p>
+          <div class="price">від 50 грн/шт</div>
+          <span class="badge badge-green">В наявності</span>
+          <span class="badge badge-blue">Різний вік</span>
+        </div>
+      </div>
+
+      <div class="card" data-type="fish">
+        <img src="img/zolota-rybka.jpg" alt="Золота рибка"/>
+        <div class="card-body">
+          <h3>🐟 Золота рибка</h3>
+          <p>Класична прикраса будь-якого акваріуму. Невибаглива та довговічна.</p>
+          <div class="price">від 80 грн/шт</div>
+          <span class="badge badge-green">В наявності</span>
+          <span class="badge badge-blue">Різний вік</span>
+        </div>
+      </div>
+    </div>
+
+<footer>
+  <p>© 2026 ЗооДім</p>
+  <div style="margin-top:8px;">
+    <a href="about.html">Про нас</a>
+    <a href="contacts.html">Контакти</a>
+  </div>
+  <div class="social-links" style="justify-content:center;margin-top:10px;">
+    <a href="https://facebook.com" target="_blank" class="social-fb">f</a>
+    <a href="https://instagram.com" target="_blank" class="social-inst">📸</a>
+    <a href="https://t.me" target="_blank" class="social-tg">✈</a>
+    <a href="https://youtube.com" target="_blank" class="social-yt">▶</a>
+  </div>
+</footer>
+<script src="auth-header.js"></script>
+</body>
+</html>

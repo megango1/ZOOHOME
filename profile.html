@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾 ЗооДім — Мій профіль</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="ЗооДім">
+  </div>
+  <nav class="horizontal-menu">
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="animals.html">Тварини</a></li>
+      <li><a href="products.html">Товари</a></li>
+      <li><a href="services.html">Послуги</a></li>
+      <li><a href="gallery.html">Галерея</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+      <li><a href="reviews.html">Відгуки</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li id="nav-login-li"><a href="login.html">Увійти</a></li>
+    </ul>
+  </nav>
+  <div id="header-user-area"></div>
+</header>
+
+<div class="page-wrapper">
+  <aside class="vertical-menu">
+    <h3>Навігація</h3>
+    <ul>
+      <li><a href="index.html"><span class="icon">🏠</span> Головна</a></li>
+      <li><a href="about.html"><span class="icon">ℹ️</span> Про нас</a></li>
+      <li><a href="animals.html"><span class="icon">🐶</span> Тварини</a></li>
+      <li><a href="products.html"><span class="icon">🛍️</span> Товари</a></li>
+      <li><a href="services.html"><span class="icon">✂️</span> Послуги</a></li>
+      <li><a href="gallery.html"><span class="icon">🖼️</span> Галерея</a></li>
+      <li><a href="blog.html"><span class="icon">📰</span> Блог</a></li>
+      <li><a href="reviews.html"><span class="icon">⭐</span> Відгуки</a></li>
+      <li><a href="contacts.html"><span class="icon">📍</span> Контакти</a></li>
+      <li><a href="profile.html" class="active"><span class="icon">👤</span> Профіль</a></li>
+    </ul>
+  </aside>
+
+  <main class="profile-main" id="profile-main"></main>
+</div>
+
+<footer>
+  <p>© 2026 ЗооДім</p>
+  <div style="margin-top:8px;">
+    <a href="about.html">Про нас</a>
+    <a href="contacts.html">Контакти</a>
+  </div>
+  <div class="social-links" style="justify-content:center;">
+    <a href="https://facebook.com" target="_blank" class="social-fb">f</a>
+    <a href="https://instagram.com" target="_blank" class="social-inst">📸</a>
+    <a href="https://t.me" target="_blank" class="social-tg">✈</a>
+    <a href="https://youtube.com" target="_blank" class="social-yt">▶</a>
+  </div>
+</footer>
+
+<script>
+  // ===== АВТОРИЗАЦІЯ В ХЕДЕРІ =====
+  function renderHeader() {
+    var user = null;
+    try { user = JSON.parse(localStorage.getItem('zoodom_current_user') || 'null'); } catch(e) {}
+
+    var area = document.getElementById('header-user-area');
+    var loginLi = document.getElementById('nav-login-li');
+
+    if (!user) return;
+
+    if (loginLi) loginLi.style.display = 'none';
+
+    var initials = user.name.trim().split(/\s+/).slice(0, 2).map(function(w){ return w[0].toUpperCase(); }).join('');
+    var firstName = user.name.split(' ')[0];
+
+    area.innerHTML =
+      '<div class="header-user" id="header-user-wrap">' +
+        '<button class="user-btn" id="user-btn-toggle" type="button">' +
+          '<div class="user-avatar">' + initials + '</div>' +
+          '<span class="user-name-short">' + firstName + '</span>' +
+          '<span class="user-arrow">▾</span>' +
+        '</button>' +
+        '<div class="user-dropdown" id="user-dropdown">' +
+          '<div class="user-dropdown-header">' +
+            '<div class="dd-name">' + user.name + '</div>' +
+            '<div class="dd-email">' + user.email + '</div>' +
+          '</div>' +
+          '<ul>' +
+            '<li><a href="profile.html">👤 Мій профіль</a></li>' +
+            '<li class="dd-separator"></li>' +
+            '<li><button class="dd-logout" onclick="logoutUser()">🚪 Вийти</button></li>' +
+          '</ul>' +
+        '</div>' +
+      '</div>';
+
+    var btn = document.getElementById('user-btn-toggle');
+    var dropdown = document.getElementById('user-dropdown');
+
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+      btn.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function() {
+      dropdown.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  }
+
+  function logoutUser() {
+    localStorage.removeItem('zoodom_current_user');
+    window.location.href = 'index.html';
+  }
+
+  // ===== ПРОФІЛЬ =====
+  function renderProfilePage() {
+    var main = document.getElementById('profile-main');
+    var user = null;
+    try { user = JSON.parse(localStorage.getItem('zoodom_current_user') || 'null'); } catch(e) {}
+
+    if (!user) {
+      main.innerHTML =
+        '<div style="text-align:center; padding:60px 20px;">' +
+          '<div style="font-size:3rem; margin-bottom:16px;">🔒</div>' +
+          '<h2 style="color:#1b4332; font-size:1.8rem; margin-bottom:10px;">Потрібна авторизація</h2>' +
+          '<p style="color:#74a98a; margin-bottom:24px;">Будь ласка, увійдіть або зареєструйтесь щоб побачити профіль.</p>' +
+          '<a href="login.html" style="padding:12px 28px; background:linear-gradient(90deg,#2d6a4f,#52b788); color:#fff; border-radius:12px; text-decoration:none; font-weight:800; font-size:1rem;">Увійти</a>' +
+        '</div>';
+      return;
+    }
+
+    var initials = user.name.trim().split(/\s+/).slice(0, 2).map(function(w){ return w[0].toUpperCase(); }).join('');
+    var phone = user.phone || null;
+    var since = user.registeredAt || 'Невідомо';
+
+    main.innerHTML =
+      '<h1 class="profile-page-title">👤 Мій профіль</h1>' +
+      '<div class="profile-layout">' +
+
+        '<div class="profile-avatar-card">' +
+          '<div class="profile-big-avatar">' + initials + '</div>' +
+          '<h3>' + user.name + '</h3>' +
+          '<div class="profile-role">🐾 Клієнт ЗооДім</div>' +
+          '<div class="profile-member-since">З нами з: ' + since + '</div>' +
+          '<button class="btn-logout-profile" onclick="logoutUser()">🚪 Вийти з акаунту</button>' +
+        '</div>' +
+
+        '<div class="profile-info-card">' +
+          '<h4>📋 Особисті дані</h4>' +
+
+          '<div class="profile-field">' +
+            '<div class="profile-field-icon">😊</div>' +
+            '<div><div class="profile-field-label">Ім\'я</div><div class="profile-field-value">' + user.name + '</div></div>' +
+          '</div>' +
+
+          '<div class="profile-field">' +
+            '<div class="profile-field-icon">✉️</div>' +
+            '<div><div class="profile-field-label">Email</div><div class="profile-field-value">' + user.email + '</div></div>' +
+          '</div>' +
+
+          '<div class="profile-field">' +
+            '<div class="profile-field-icon">📞</div>' +
+            '<div><div class="profile-field-label">Телефон</div><div class="profile-field-value ' + (phone ? '' : 'empty') + '">' + (phone || 'Не вказано') + '</div></div>' +
+          '</div>' +
+
+          '<div class="profile-field">' +
+            '<div class="profile-field-icon">📅</div>' +
+            '<div><div class="profile-field-label">Дата реєстрації</div><div class="profile-field-value">' + since + '</div></div>' +
+          '</div>' +
+
+          '<div class="profile-field">' +
+            '<div class="profile-field-icon">🔒</div>' +
+            '<div><div class="profile-field-label">Пароль</div><div class="profile-field-value">••••••••</div></div>' +
+          '</div>' +
+
+        '</div>' +
+      '</div>';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    renderHeader();
+    renderProfilePage();
+  });
+</script>
+</body>
+</html>
